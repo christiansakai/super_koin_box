@@ -1,5 +1,11 @@
 import Game from "./javascripts/Game";
 
+/**
+ * @function
+ * Start a new game and
+ * mount it on a DOM with
+ * ID "game".
+ */
 const startGame = () => {
   const game = new Game({
     width: 500,

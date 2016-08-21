@@ -4,19 +4,24 @@ import Walls from "../prefabs/Walls";
 import Score from "../prefabs/Score";
 import Enemies from "../prefabs/Enemies";
 
-class Main extends Phaser.State {
-  preload() {
-    this.game.load.image("player", "/player.png");
-    this.game.load.image("wallVertical", "/wallVertical.png");
-    this.game.load.image("wallHorizontal", "/wallHorizontal.png");
-    this.game.load.image("koin", "/coin.png");
-    this.game.load.image("enemy", "/enemy.png");
-  }
-
+/**
+ * Class representing Play State.
+ * This is where the actual game play
+ * takes place.
+ * @extends Phaser.State
+ */
+class Play extends Phaser.State {
+  
+  /**
+   * Create all the objects 
+   * and setup needed for the game
+   * aside from background color
+   * and physics engine (beause
+   * we did that in Boot.js).
+   */
   create() {
-    this.setupBasics();
-    this.createPlayer();
     this.createWalls();
+    this.createPlayer();
     this.setupControls();
     this.createKoin();
     this.createScore();
@@ -27,11 +32,10 @@ class Main extends Phaser.State {
     this.game.add.existing(this.enemies);
   }
 
-  setupBasics() {
-    this.game.stage.backgroundColor = "#3498db";
-    this.game.physics.startSystem(Phaser.Physics.ARCADE);
-  }
-
+  /**
+   * Create walls for the player
+   * to move around.
+   */
   createWalls() {
     this.walls = new Walls({
       game: this.game,
@@ -41,12 +45,20 @@ class Main extends Phaser.State {
     this.game.add.existing(this.walls);
   }
 
+  /**
+   * Create the player.
+   */
   createPlayer() {
     this.player = new Player({
       game: this.game,
       x: this.game.world.centerX,
       y: this.game.world.centerY,
-      asset: "player"
+      asset: "playerAnimated",
+      sound: {
+        jump: "jump",
+        dead: "dead",
+        koin: "koin"
+      }
     });
     this.game.add.existing(this.player);
   }
@@ -105,4 +117,4 @@ class Main extends Phaser.State {
     
 }
 
-export default Main;
+export default Play;
