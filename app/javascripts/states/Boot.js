@@ -23,7 +23,7 @@ class Boot extends Phaser.State {
     this.game.stage.backgroundColor = "#3498db";
     this.game.physics.startSystem(Phaser.Physics.ARCADE);
 
-    this.start("Load");
+    this.game.state.start("Load");
   }
   
 }

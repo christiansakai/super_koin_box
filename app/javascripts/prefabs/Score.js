@@ -27,7 +27,7 @@ class Score extends Phaser.Text {
    */
   updateAmountBy(number) {
     this.game.global.score += number;
-    this.text = `score ${this.amount}`;
+    this.text = `score ${this.game.global.score}`;
   }
 
 }

@@ -29,11 +29,16 @@ class Koin extends Phaser.Sprite {
     let positions;
 
     for (let i = 0; i < this.spawningPositions.length; i++)
-      if (this.spawningPositions[i].x == this.x)
-        positions = this.spawningPositions.slice(i, 1);
+      if (this.spawningPositions[i].x == this.x) {
+        // Copy into a new array
+        positions = this.spawningPositions.slice();
+        // and remove that element from that 
+        // new array
+        positions.splice(i, 1);
+      }
 
-    let positions = positions[
-      this.game.rnd.integerInRange(0, coinPositions.length - 1)
+    let position = positions[
+      this.game.rnd.integerInRange(0, positions.length - 1)
     ];
 
     this.reset(position.x, position.y);

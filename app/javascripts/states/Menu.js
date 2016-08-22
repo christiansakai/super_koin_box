@@ -62,7 +62,7 @@ class Menu extends Phaser.State {
   createStartLabel() {
     const startLabel = this.game
       .add.text(this.game.world.centerX,
-                this.game.world.centerY - 80,
+                this.game.world.height - 80,
                 "press the up arrow key to start",
                 {
                   font: "25px Arial",
@@ -87,7 +87,7 @@ class Menu extends Phaser.State {
    * Go to Play state.
    */
   goToPlay() {
-    this.start("Play");
+    this.game.state.start("Play");
   }
 
 }

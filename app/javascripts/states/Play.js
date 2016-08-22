@@ -118,9 +118,13 @@ class Play extends Phaser.State {
    * Phaser engine every framerate.
    */
   update() {
-    this.player.move(this.cursor);
-    
+    // This has to come before `this.player.move`
+    // because the latter requires
+    // Physics to check whether the bottom part
+    // of the player touches the wall or not
     this.checkCollisions();
+
+    this.player.move(this.cursor);
 
     if (!this.player.inWorld) 
       this.playerDie();
@@ -146,6 +150,7 @@ class Play extends Phaser.State {
    */
   playerDie() {
     this.game.state.start("Play");
+    this.player.kill();
   }
 
   /**
@@ -154,6 +159,7 @@ class Play extends Phaser.State {
    * the koin.
    */
   takeAndRespawnKoin() {
+    this.player.sounds.koin.play();
     this.score.updateAmountBy(5);
     this.koin.respawn();
   }

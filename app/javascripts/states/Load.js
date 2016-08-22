@@ -46,7 +46,7 @@ class Load extends Phaser.State {
 
     // After assets loading completed, run
     // `this.goToMenu` function
-    this.game.load.onLoadComplete(this.goToMenu, this);
+    this.game.load.onLoadComplete.add(this.goToMenu, this);
   }
 
   /**
@@ -60,6 +60,7 @@ class Load extends Phaser.State {
     this.game.load.spritesheet("playerAnimated", "/playerAnimated.png", 20, 20);
     this.game.load.image("wallVertical", "/wallVertical.png");
     this.game.load.image("wallHorizontal", "/wallHorizontal.png");
+    this.game.load.image("background", "/background.png");
     this.game.load.image("tileset", "/tileset.png");
     this.game.load.image("koin", "/coin.png");
     this.game.load.image("enemy", "/enemy.png");
@@ -89,7 +90,7 @@ class Load extends Phaser.State {
    * Transition to Menu state.
    */
   goToMenu() {
-    this.start("Menu");
+    this.game.state.start("Menu");
   }
 }
 

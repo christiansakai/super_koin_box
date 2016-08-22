@@ -1,34 +1,44 @@
 import Enemy from "./Enemy";
 
+/**
+ * Class representing enemies.
+ * @extends Phaser.Group
+ */
 class Enemies extends Phaser.Group {
+  
+  /**
+   * Create a group of enemies
+   * that constantly respawn.
+   * @param {object} config enemies configuration
+   * @param {Phaser.Game} config.game the current running game
+   * @param {Phaser.Group|Phaser.World} config.parent the parent of this group
+   */
   constructor({ game, parent }) {
     super(game, parent);
 
-    // this.enableBody = true;
+    this.createMultiple(10, "enemy"); // ???
+    // let enemy;
+    // for (let i = 0; i < 5; i++){
+    //   enemy = new Enemy({
+    //     game: this.game,
+    //     x: this.game.world.centerX,
+    //     y: 0,
+    //     asset: "enemy"
+    //   });
 
-    // this.createMultiple(10, "enemy"); // ???
-    for (let i = 0; i < 5; i++){
-      let enemy = new Enemy({
-        game: this.game,
-        x: this.game.world.centerX,
-        y: 0,
-        asset: "enemy"
-      });
+    //   this.add(enemy);
+    // }
 
-      this.add(enemy);
-    }
+    // console.log(this);
 
-    const enemyTimer = this.game.time.events.loop(2200,
-                                             this.addEnemy,
-                                             this);
+    // const enemyTimer = this.game.time.events.loop(2000,
+    //                                          this.addEnemy,
+    //                                          this);
 
-                                             // connsole.log(enemyTimer);
     // enemyTimer.start();
   }
 
   addEnemy() {
-    console.log("E");
-
     let enemy = this.getFirstDead();
 
     if (!enemy) return;
