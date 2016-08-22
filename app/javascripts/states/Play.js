@@ -20,16 +20,20 @@ class Play extends Phaser.State {
    * we did that in Boot.js).
    */
   create() {
+    this.setupControls();
     this.createWalls();
     this.createPlayer();
-    this.setupControls();
+    this.createEnemies();
     this.createKoin();
     this.createScore();
+  }
 
-    this.enemies = new Enemies({
-      game: this.game
-    });
-    this.game.add.existing(this.enemies);
+  /**
+   * Assign cursor keys
+   * as controls.
+   */
+  setupControls() {
+    this.cursor = this.game.input.keyboard.createCursorKeys();
   }
 
   /**
@@ -63,56 +67,95 @@ class Play extends Phaser.State {
     this.game.add.existing(this.player);
   }
 
+  /**
+   * Create enemies.
+   */
+  createEnemies() {
+    this.enemies = new Enemies({
+      game: this.game
+    });
+    this.game.add.existing(this.enemies);
+  }
+
+  /**
+   * Create koins.
+   */
   createKoin() {
+    const coinPositions = [
+      { x: 140, y: 60 }, { x: 360, y: 60 }, // Top row
+      { x: 60, y: 140 }, { x: 440, y: 140 }, // Middle row
+      { x: 130, y: 300 }, { x: 370, y: 300 } // Bottom row
+    ];
+
     this.koin = new Koin({
       game: this.game,
       x: 60,
       y: 140,
-      asset: "koin"
+      asset: "koin",
+      spawningPositions: coinPositions
     });
     this.game.add.existing(this.koin);
   }
 
+  /**
+   * Create score label.
+   * Automatically resets the 
+   * global.score to 0.
+   */
   createScore() {
     this.score = new Score({
       game: this.game,
       x: 30,
       y: 30,
-      text: "Score: 0",
+      text: "score: 0",
       fill: "#FFFFFF"
     });
     this.game.add.existing(this.score);
   }
 
-  setupControls() {
-    this.cursor = this.game.input.keyboard.createCursorKeys();
-  }
-
+  /**
+   * Automatically gets called by 
+   * Phaser engine every framerate.
+   */
   update() {
-    this.game.physics.arcade.collide(this.player, this.walls);
     this.player.move(this.cursor);
-
-    this.game.physics.arcade.overlap(this.player, this.koin, this.takeCoin, null, this);
-
-    this.game.physics.arcade.collide(this.walls, this.enemies);
+    
+    this.checkCollisions();
 
     if (!this.player.inWorld) 
       this.playerDie();
   }
 
-  playerDie() {
-    this.game.state.start("Main");
+  /**
+   * Check collisions between
+   * the player and the walls,
+   * the enemies and the walls,
+   * the player and the enemies,
+   * and between the player and the koin.
+   */
+  checkCollisions() {
+    this.game.physics.arcade.collide(this.player, this.walls);
+    this.game.physics.arcade.collide(this.walls, this.enemies);
+    this.game.physics.arcade.overlap(this.player, this.koin, this.takeAndRespawnKoin, null, this);
+    this.game.physics.arcade.collide(this.player, this.enemies, this.playerDie, null, this);
   }
 
-  takeCoin() {
-    const coinPosition = [
-      { x: 140, y: 60 }, { x: 360, y: 60 }, // Top row
-      { x: 60, y: 140 }, { x: 440, y: 140 }, // Middle row
-      { x: 130, y: 300 }, { x: 370, y: 300 }
-    ];
+  /**
+   * When the player dies, the
+   * game restarts into Play state.
+   */
+  playerDie() {
+    this.game.state.start("Play");
+  }
 
+  /**
+   * Take the coin and update
+   * the score by 5, also respawn
+   * the koin.
+   */
+  takeAndRespawnKoin() {
     this.score.updateAmountBy(5);
-    this.koin.respawnRandomly(coinPosition);
+    this.koin.respawn();
   }
     
 }

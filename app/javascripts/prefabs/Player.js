@@ -13,15 +13,12 @@ class Player extends Phaser.Sprite {
    * @param {string} config.asset preloaded asset for the player
    * @param {object} config.sound sound configuration
    * @param {string} config.sound.jump sound to be played when player jumps
-   * @param {string} config.sound.dead sound to be played when player dies
-   * @param {string} config.sound.koin sound to be played when player obtains a koin
    */
-  constructor({ game, x, y, asset, { jump, dead, koin } }) {
+  constructor({ game, x, y, asset }) {
     super(game, x, y, asset);
 
     this.setupBasics();
     this.setAnimations();
-    this.setSounds(jump, dead, koin);
   }
 
   /**
@@ -40,15 +37,6 @@ class Player extends Phaser.Sprite {
   setAnimations() {
     this.animations.add("moveRight", [1, 2], 8, true);
     this.animations.add("moveLeft", [3, 4], 8, true);
-  }
-
-  /**
-   * Add sounds for player events.
-   * @param {string} jump sound to be played when player jumps
-   * @param {string} dead sound to be played when player dies
-   * @param {string} koin sound to be played when player obtains a koin
-   */
-  setSounds(jump, dead, koin) {
   }
 
   /**
@@ -76,9 +64,11 @@ class Player extends Phaser.Sprite {
       this.player.frame = 0;
     }
 
+    // Only jumps if the player is on the ground
     if (cursor.up.isDown && this.body.touching.down)
       this.body.velocity.y = -320;
   }
+
 }
 
 export default Player;
