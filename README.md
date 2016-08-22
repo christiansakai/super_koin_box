@@ -1,28 +1,22 @@
-# Brunch + Babel/ES6
+# Super Koin Box
 
-This is a modern JS skeleton for [Brunch](http://brunch.io).
+Small game (a Super Crate Box clone) using Phaser by following a tutorial from [www.discoverphaser.com](http://www.discoverphaser.com/). Syntax is using modern ES6 Class. 
 
-## Installation
+# Getting Started
 
-Clone this repo manually or use `brunch new dir -s brunch/with-es6`
+* Install:
+  * Clone/download this repo
+  * If you don't have NodeJS, then install [Node.js](http://nodejs.org): `brew install node` on OS X
+  * `cd` into this repository
+  * Install dependencies: `npm install`
 
-## Getting started
-
-* Install (if you don't have them):
-    * [Node.js](http://nodejs.org): `brew install node` on OS X
-    * [Brunch](http://brunch.io): `npm install -g brunch`
-    * Brunch plugins and app dependencies: `npm install`
 * Run:
-    * `brunch watch --server` — watches the project with continuous rebuild. This will also launch HTTP server with [pushState](https://developer.mozilla.org/en-US/docs/Web/Guide/API/DOM/Manipulating_the_browser_history).
-    * `brunch build --production` — builds minified project for production
-* Learn:
-    * `public/` dir is fully auto-generated and served by HTTP server.  Write your code in `app/` dir.
-    * Place static files you want to be copied from `app/assets/` to `public/`.
-    * [Brunch site](http://brunch.io), [Getting started guide](https://github.com/brunch/brunch-guide#readme)
+  * `npm start` to run the development
+  * `npm run prod` to build the minified project for production
 
-## ES7
+* Develop:
+  * `public/` dir is fully auto-generated and served by Brunch. Write your code in `app/` dir
+  * Place static files you want to be copied from `app/assets/` to `public/`
 
-To use proposed JS features not included into ES6, do this:
-
-* `npm install --save-dev babel-preset-stage-0`
-* in `brunch-config.js`, add the preset: `presets: ['es2015', 'stage-0']`
+* Docs:
+  * `npm run docs` to generate docs in `docs` dir
