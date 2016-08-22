@@ -25,7 +25,7 @@ class Enemy extends Phaser.Sprite {
     this.game.physics.arcade.enable(this);
     this.anchor.setTo(0.5, 1);
     this.body.gravity.y = 500;
-    this.body.velocity.x = 100;
+    this.body.velocity.x = 100 * Phaser.Math.randomSign();
 
     // Bounce when this object hits
     // another object with Physics.

@@ -26,7 +26,7 @@ class Game extends Phaser.Game {
     // Global object to be used
     // throughout the game.
     this.global = {
-      score: 0;
+      score: 0
     };
 
     this.state.add("Boot", Boot);
