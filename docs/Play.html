@@ -208,7 +208,7 @@ and between the player and the koin.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="javascripts_states_Play.js.html">javascripts/states/Play.js</a>, <a href="javascripts_states_Play.js.html#line136">line 136</a>
+        <a href="javascripts_states_Play.js.html">javascripts/states/Play.js</a>, <a href="javascripts_states_Play.js.html#line141">line 141</a>
     </li></ul></dd>
     
 
@@ -376,7 +376,7 @@ we did that in Boot.js).</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="javascripts_states_Play.js.html">javascripts/states/Play.js</a>, <a href="javascripts_states_Play.js.html#line73">line 73</a>
+        <a href="javascripts_states_Play.js.html">javascripts/states/Play.js</a>, <a href="javascripts_states_Play.js.html#line74">line 74</a>
     </li></ul></dd>
     
 
@@ -458,7 +458,7 @@ we did that in Boot.js).</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="javascripts_states_Play.js.html">javascripts/states/Play.js</a>, <a href="javascripts_states_Play.js.html#line83">line 83</a>
+        <a href="javascripts_states_Play.js.html">javascripts/states/Play.js</a>, <a href="javascripts_states_Play.js.html#line84">line 84</a>
     </li></ul></dd>
     
 
@@ -624,7 +624,7 @@ global.score to 0.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="javascripts_states_Play.js.html">javascripts/states/Play.js</a>, <a href="javascripts_states_Play.js.html#line105">line 105</a>
+        <a href="javascripts_states_Play.js.html">javascripts/states/Play.js</a>, <a href="javascripts_states_Play.js.html#line106">line 106</a>
     </li></ul></dd>
     
 
@@ -738,15 +738,14 @@ to move around.</p>
 
     
 
-    <h4 class="name" id="playerDie"><span class="type-signature"></span>playerDie<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="goToMenu"><span class="type-signature"></span>goToMenu<span class="signature">()</span><span class="type-signature"></span></h4>
 
     
 
 
 
 <div class="description">
-    <p>When the player dies, the
-game restarts into Play state.</p>
+    <p>Transition to Menu state.</p>
 </div>
 
 
@@ -790,7 +789,93 @@ game restarts into Play state.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="javascripts_states_Play.js.html">javascripts/states/Play.js</a>, <a href="javascripts_states_Play.js.html#line147">line 147</a>
+        <a href="javascripts_states_Play.js.html">javascripts/states/Play.js</a>, <a href="javascripts_states_Play.js.html#line166">line 166</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="playerDie"><span class="type-signature"></span>playerDie<span class="signature">()</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>When the player dies, the
+game restarts into Menu State.
+We add delay because the animation
+of player dying needs to be
+completed first.</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="javascripts_states_Play.js.html">javascripts/states/Play.js</a>, <a href="javascripts_states_Play.js.html#line155">line 155</a>
     </li></ul></dd>
     
 
@@ -957,7 +1042,7 @@ the koin.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="javascripts_states_Play.js.html">javascripts/states/Play.js</a>, <a href="javascripts_states_Play.js.html#line156">line 156</a>
+        <a href="javascripts_states_Play.js.html">javascripts/states/Play.js</a>, <a href="javascripts_states_Play.js.html#line175">line 175</a>
     </li></ul></dd>
     
 
@@ -1040,7 +1125,7 @@ Phaser engine every framerate.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="javascripts_states_Play.js.html">javascripts/states/Play.js</a>, <a href="javascripts_states_Play.js.html#line120">line 120</a>
+        <a href="javascripts_states_Play.js.html">javascripts/states/Play.js</a>, <a href="javascripts_states_Play.js.html#line121">line 121</a>
     </li></ul></dd>
     
 
@@ -1082,7 +1167,7 @@ Phaser engine every framerate.</p>
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Boot.html">Boot</a></li><li><a href="Enemy.html">Enemy</a></li><li><a href="Game.html">Game</a></li><li><a href="Koin.html">Koin</a></li><li><a href="Load.html">Load</a></li><li><a href="Menu.html">Menu</a></li><li><a href="Play.html">Play</a></li><li><a href="Player.html">Player</a></li><li><a href="Score.html">Score</a></li><li><a href="Walls.html">Walls</a></li></ul><h3>Global</h3><ul><li><a href="global.html#StartanewgameandmountitonaDOMwithID%2522game%2522.">Start a new game and
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Boot.html">Boot</a></li><li><a href="Enemies.html">Enemies</a></li><li><a href="Enemy.html">Enemy</a></li><li><a href="Game.html">Game</a></li><li><a href="Koin.html">Koin</a></li><li><a href="Load.html">Load</a></li><li><a href="Menu.html">Menu</a></li><li><a href="Play.html">Play</a></li><li><a href="Player.html">Player</a></li><li><a href="Score.html">Score</a></li><li><a href="Walls.html">Walls</a></li></ul><h3>Global</h3><ul><li><a href="global.html#StartanewgameandmountitonaDOMwithID%2522game%2522.">Start a new game and
 mount it on a DOM with
 ID "game".</a></li></ul>
 </nav>
@@ -1090,7 +1175,7 @@ ID "game".</a></li></ul>
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Sun Aug 21 2016 22:46:46 GMT-0400 (EDT)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Tue Aug 23 2016 12:23:12 GMT-0400 (EDT)
 </footer>
 
 <script> prettyPrint(); </script>

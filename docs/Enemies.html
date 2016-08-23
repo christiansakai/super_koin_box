@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Class: Score</title>
+    <title>JSDoc: Class: Enemies</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Class: Score</h1>
+    <h1 class="page-title">Class: Enemies</h1>
 
     
 
@@ -28,9 +28,9 @@
 
 <header>
     
-        <h2>Score</h2>
+        <h2>Enemies</h2>
         
-            <div class="class-description"><p>Class representing Score.</p></div>
+            <div class="class-description"><p>Class representing enemies.</p></div>
         
     
 </header>
@@ -44,15 +44,15 @@
     <h2>Constructor</h2>
     
 
-    <h4 class="name" id="Score"><span class="type-signature"></span>new Score<span class="signature">(config)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="Enemies"><span class="type-signature"></span>new Enemies<span class="signature">(config)</span><span class="type-signature"></span></h4>
 
     
 
 
 
 <div class="description">
-    <p>Create a new score board.
-Also resets the global score to 0.</p>
+    <p>Create a group of enemies
+that constantly respawn.</p>
 </div>
 
 
@@ -104,7 +104,7 @@ Also resets the global score to 0.</p>
 
             
 
-            <td class="description last"><p>scoreboard configuration</p>
+            <td class="description last"><p>enemies configuration</p>
                 <h6>Properties</h6>
                 
 
@@ -130,13 +130,13 @@ Also resets the global score to 0.</p>
 
         <tr>
             
-                <td class="name"><code>x</code></td>
+                <td class="name"><code>game</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">number</span>
+<span class="param-type">Phaser.Game</span>
 
 
             
@@ -146,20 +146,23 @@ Also resets the global score to 0.</p>
 
             
 
-            <td class="description last"><p>x-axis location of this scoreboard</p></td>
+            <td class="description last"><p>the current running game</p></td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>y</code></td>
+                <td class="name"><code>parent</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">number</span>
+<span class="param-type">Phaser.Group</span>
+|
+
+<span class="param-type">Phaser.World</span>
 
 
             
@@ -169,76 +172,7 @@ Also resets the global score to 0.</p>
 
             
 
-            <td class="description last"><p>y-axis location of this scoreboard</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>text</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>scoreboard text</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>font</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>font style and size</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>fill</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>font color</p></td>
+            <td class="description last"><p>the parent of this group</p></td>
         </tr>
 
     
@@ -286,7 +220,7 @@ Also resets the global score to 0.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="javascripts_prefabs_Score.js.html">javascripts/prefabs/Score.js</a>, <a href="javascripts_prefabs_Score.js.html#line5">line 5</a>
+        <a href="javascripts_prefabs_Enemies.js.html">javascripts/prefabs/Enemies.js</a>, <a href="javascripts_prefabs_Enemies.js.html#line7">line 7</a>
     </li></ul></dd>
     
 
@@ -322,7 +256,7 @@ Also resets the global score to 0.</p>
 
 
     <ul>
-        <li>Phaser.Text</li>
+        <li>Phaser.Group</li>
     </ul>
 
 
@@ -346,15 +280,101 @@ Also resets the global score to 0.</p>
 
     
 
-    <h4 class="name" id="updateAmountBy"><span class="type-signature"></span>updateAmountBy<span class="signature">(number)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="addEnemy"><span class="type-signature"></span>addEnemy<span class="signature">()</span><span class="type-signature"></span></h4>
 
     
 
 
 
 <div class="description">
-    <p>Update score board by the number
-and display it on the text.</p>
+    <p>Adding enemies
+by reusing the previous dead enemies.</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="javascripts_prefabs_Enemies.js.html">javascripts/prefabs/Enemies.js</a>, <a href="javascripts_prefabs_Enemies.js.html#line56">line 56</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="spawnFirstBatchOfEnemies"><span class="type-signature"></span>spawnFirstBatchOfEnemies<span class="signature">(enemies)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Spawn first batch of enemies.
+These enemies will be reused later
+on <code>this.addEnemy</code>. To increase
+difficulty, just adjus the number
+of spawned enemies here.</p>
 </div>
 
 
@@ -390,7 +410,7 @@ and display it on the text.</p>
 
         <tr>
             
-                <td class="name"><code>number</code></td>
+                <td class="name"><code>enemies</code></td>
             
 
             <td class="type">
@@ -406,7 +426,7 @@ and display it on the text.</p>
 
             
 
-            <td class="description last"><p>increment value</p></td>
+            <td class="description last"><p>number of spawned enemies</p></td>
         </tr>
 
     
@@ -447,7 +467,7 @@ and display it on the text.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="javascripts_prefabs_Score.js.html">javascripts/prefabs/Score.js</a>, <a href="javascripts_prefabs_Score.js.html#line28">line 28</a>
+        <a href="javascripts_prefabs_Enemies.js.html">javascripts/prefabs/Enemies.js</a>, <a href="javascripts_prefabs_Enemies.js.html#line34">line 34</a>
     </li></ul></dd>
     
 
