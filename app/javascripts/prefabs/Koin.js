@@ -17,9 +17,30 @@ class Koin extends Phaser.Sprite {
   constructor({ game, x, y, asset, spawningPositions }) {
     super(game, x, y, asset);
 
+    this.setupBasics(spawningPositions);
+  }
+
+  /**
+   * Set basic Physics, anchor
+   * and spawning positions.
+   */
+  setupBasics(spawningPositions) {
     this.game.physics.arcade.enable(this);
     this.anchor.setTo(0.5, 0.5);
     this.spawningPositions = spawningPositions;
+  }
+
+  /**
+   * Tween the coin.
+   */
+  shrinkAndGrow() {
+    // Make the coin invisible
+    this.scale.setTo(0, 0);
+    // Quickly grow back the coin
+    // to its original scale
+    this.game.add.tween(this.scale)
+      .to({ x: 1, y: 1 }, 300)
+      .start();
   }
 
   /**

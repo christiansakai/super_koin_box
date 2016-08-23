@@ -11,17 +11,19 @@ class Player extends Phaser.Sprite {
    * @param {number} config.x x-axis location for the player
    * @param {number} config.y y-axis location for the player
    * @param {string} config.asset preloaded asset for the player
+   * @param {string} config.particleAsset preloaded asset for explosion
    * @param {object} config.sound sound configuration
    * @param {string} config.sound.jump sound to be played when player jumps
    * @param {string} config.sound.koin sound to be played when player obtain a koin
    * @param {string} config.sound.dead sound to be played when player dies
    */
-  constructor({ game, x, y, asset, sound }) {
+  constructor({ game, x, y, asset, particleAsset, sound }) {
     super(game, x, y, asset);
 
     this.setupBasics();
     this.setAnimations();
     this.setSounds(sound.jump, sound.koin, sound.dead);
+    this.setExplosion(particleAsset);
   }
 
   /**
@@ -51,6 +53,24 @@ class Player extends Phaser.Sprite {
       koin: this.game.add.audio(koin),
       dead: this.game.add.audio(dead)
     };
+  }
+
+  /**
+   * Create a particle emitter
+   * to emulate an explosion.
+   * @param {string} particleAsset preloaded asset for explosion
+   */
+  setExplosion(particleAsset) {
+    // 15 particles explosion
+    this.explosion = this.game
+      .add.emitter(0, 0, 15);
+    this.explosion.makeParticles(particleAsset);
+    // Randomly choose particle speed between
+    // -150 and 150
+    this.explosion.setYSpeed(-150, 150);
+    this.explosion.setXSpeed(-150, 150);
+    // Disable gravity for the particles
+    this.explosion.gravity = 0;
   }
 
   /**
@@ -86,11 +106,42 @@ class Player extends Phaser.Sprite {
   }
 
   /**
+   * Animate the explosion
+   * animation to the player.
+   */
+  explode() {
+    this.explosion.x = this.x;
+    this.explosion.y = this.y;
+    this.explosion.start(true, 1000, null, 100);
+  }
+
+  /**
    * Kill the player.
+   * Add explosion animations.
    */
   kill() {
-    super.kill();
+    // The update calls this function
+    // 60 times / second.
+    // Since now we have the 1 second delay
+    // before in Play.js going to Main state, 
+    // we are hearing `this.sounds.dead.play()`
+    // being called 60 times / second.
+    // This line below is to avoid that
+    if (!this.alive) return;
+
     this.sounds.dead.play();
+    this.explode();
+    super.kill();
+  }
+
+  /**
+   * Tween the player.
+   */
+  growAndShrink() {
+    this.game.add.tween(this.scale)
+      .to({ x: 1.3, y: 1.3 }, 50)
+      .to({ x: 1, y: 1 }, 150)
+      .start();
   }
 
 }

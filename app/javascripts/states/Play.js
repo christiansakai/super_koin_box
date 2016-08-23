@@ -58,6 +58,7 @@ class Play extends Phaser.State {
       x: this.game.world.centerX,
       y: this.game.world.centerY,
       asset: "playerAnimated",
+      particleAsset: "pixel",
       sound: {
         jump: "jump",
         dead: "dead",
@@ -146,11 +147,24 @@ class Play extends Phaser.State {
 
   /**
    * When the player dies, the
-   * game restarts into Play state.
+   * game restarts into Menu State.
+   * We add delay because the animation
+   * of player dying needs to be
+   * completed first.
    */
   playerDie() {
-    this.game.state.start("Play");
     this.player.kill();
+
+    // Call the `this.goToMenu` function
+    // in 1000 ms
+    this.game.time.events.add(1000, this.goToMenu, this);
+  }
+
+  /**
+   * Transition to Menu state.
+   */
+  goToMenu() {
+    this.game.state.start("Menu");
   }
 
   /**
@@ -160,7 +174,9 @@ class Play extends Phaser.State {
    */
   takeAndRespawnKoin() {
     this.player.sounds.koin.play();
+    this.player.growAndShrink();
     this.score.updateAmountBy(5);
+    this.koin.shrinkAndGrow();
     this.koin.respawn();
   }
     

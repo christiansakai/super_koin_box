@@ -24,18 +24,23 @@ class Menu extends Phaser.State {
   }
 
   /**
-   * Create and add title.
+   * Create and add title
+   * and its animations.
    */
   createTitleLabel() {
     const title = this.game
       .add.text(this.game.world.centerX, 
-                80, 
+                0, 
                 "Super Koin Box",
                 {
                   font: "50px Arial",
                   fill: "#FFFFFF"
                 });
     title.anchor.setTo(0.5, 0.5);
+
+    const tween = this.game.add.tween(title);
+    tween.to({ y: 80 }, 1000).easing(Phaser.Easing.Bounce.Out);
+    tween.start();
   }
 
   /**
@@ -56,8 +61,8 @@ class Menu extends Phaser.State {
   }
 
   /**
-   * Create start label. Explain
-   * how to start the game.
+   * Create start label and its animations. 
+   * Explains how to start the game.
    */
   createStartLabel() {
     const startLabel = this.game
@@ -70,6 +75,11 @@ class Menu extends Phaser.State {
                 });
     startLabel.anchor.setTo(0.5, 0.5);
 
+    const tween = this.game.add.tween(startLabel);
+    tween.to({ angle: -2 }, 500);
+    tween.to({ angle: 2 }, 500);
+    tween.loop();
+    tween.start();
   }
 
   /**
